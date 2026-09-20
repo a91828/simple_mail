@@ -1,5 +1,4 @@
 package com.example.simple_mail
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,22 +20,12 @@ class EmailAdapter (private val emails: List<Email>) : RecyclerView.Adapter<Emai
         holder: ViewHolder,
         position: Int
     ) {
+
         val email = emails.get(position)
-        val sender = holder.senderTextView
-        val title = holder.titleTextView
-        val summary = holder.summaryTextView
-
-        if(!email.read) {
-            sender.setTypeface(sender.typeface, Typeface.BOLD)
-            title.setTypeface(title.typeface, Typeface.BOLD)
-            summary.setTypeface(title.typeface, Typeface.BOLD)
-        }
-
-        sender.text = email.sender
-        title.text = email.title
-        summary.text = email.summary
-        holder.
-
+        holder.senderTextView.text = email.sender
+        holder.titleTextView.text = email.title
+        holder.summaryTextView.text = email.summary
+        holder.dateTextView.text = email.date
     }
 
     override fun getItemCount(): Int {
@@ -47,11 +36,13 @@ class EmailAdapter (private val emails: List<Email>) : RecyclerView.Adapter<Emai
         val senderTextView: TextView
         val titleTextView: TextView
         val summaryTextView: TextView
+        val dateTextView: TextView
 
         init {
             senderTextView = itemView.findViewById(R.id.senderTv)
             titleTextView = itemView.findViewById(R.id.titleTv)
             summaryTextView = itemView.findViewById(R.id.summaryTv)
+            dateTextView = itemView.findViewById(R.id.dateTv)
         }
     }
 }
